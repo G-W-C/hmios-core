@@ -224,234 +224,234 @@
   ];
 
   # Configure i3 for tablet kiosk mode
-  environment.etc."i3-tablet-config" = {
-    text = ''
-      # i3 configuration for tablet kiosk mode
+#   environment.etc."i3-tablet-config" = {
+#     text = ''
+#       # i3 configuration for tablet kiosk mode
       
-      # Remove window decorations
-      new_window none
-      new_float none
+#       # Remove window decorations
+#       new_window none
+#       new_float none
       
-      # Hide window borders
-      for_window [class=".*"] border none
+#       # Hide window borders
+#       for_window [class=".*"] border none
       
-      # Disable focus follows mouse (important for touch)
-      focus_follows_mouse no
-      mouse_warping none
+#       # Disable focus follows mouse (important for touch)
+#       focus_follows_mouse no
+#       mouse_warping none
       
-      # Font for better visibility on tablets
-      font pango:DejaVu Sans Mono 12
+#       # Font for better visibility on tablets
+#       font pango:DejaVu Sans Mono 12
       
-      # Start applications
-      exec --no-startup-id xset s off
-      exec --no-startup-id xset -dpms
-      exec --no-startup-id xset s noblank
-      exec --no-startup-id unclutter -idle 3 -jitter 2
+#       # Start applications
+#       exec --no-startup-id xset s off
+#       exec --no-startup-id xset -dpms
+#       exec --no-startup-id xset s noblank
+#       exec --no-startup-id unclutter -idle 3 -jitter 2
       
-      # Screen rotation support
-      exec --no-startup-id xrandr --output eDP-1 --rotate normal
+#       # Screen rotation support
+#       exec --no-startup-id xrandr --output eDP-1 --rotate normal
       
-      # Start on-screen keyboard daemon (hidden by default)
-      exec --no-startup-id onboard --not-show-in=GNOME,KDE
+#       # Start on-screen keyboard daemon (hidden by default)
+#       exec --no-startup-id onboard --not-show-in=GNOME,KDE
       
-      # Start Firefox in kiosk mode with touch optimizations
-      exec --no-startup-id firefox \
-        --kiosk \
-        --new-instance \
-        --profile /tmp/firefox-tablet \
-        --preferences='{
-          "browser.cache.disk.enable": false,
-          "browser.cache.memory.enable": true,
-          "browser.sessionstore.resume_from_crash": false,
-          "browser.shell.checkDefaultBrowser": false,
-          "browser.startup.homepage": "about:blank",
-          "dom.disable_beforeunload": true,
-          "full-screen-api.ignore-widgets": true,
-          "media.autoplay.default": 0,
-          "security.sandbox.content.level": 1,
-          "toolkit.legacyUserProfileCustomizations.stylesheets": true
-        }' \
-        "http://localhost:3000/dashboards|http://localhost:8088/data/perspective/client/HMI|http://localhost:8080/system/gateway/StatusAndDiagnostics_Overview"
+#       # Start Firefox in kiosk mode with touch optimizations
+#       exec --no-startup-id firefox \
+#         --kiosk \
+#         --new-instance \
+#         --profile /tmp/firefox-tablet \
+#         --preferences='{
+#           "browser.cache.disk.enable": false,
+#           "browser.cache.memory.enable": true,
+#           "browser.sessionstore.resume_from_crash": false,
+#           "browser.shell.checkDefaultBrowser": false,
+#           "browser.startup.homepage": "about:blank",
+#           "dom.disable_beforeunload": true,
+#           "full-screen-api.ignore-widgets": true,
+#           "media.autoplay.default": 0,
+#           "security.sandbox.content.level": 1,
+#           "toolkit.legacyUserProfileCustomizations.stylesheets": true
+#         }' \
+#         "http://localhost:3000/dashboards|http://localhost:8088/data/perspective/client/HMI|http://localhost:8080/system/gateway/StatusAndDiagnostics_Overview"
       
-      # Touch-friendly keyboard shortcuts
-      bindsym F5 exec --no-startup-id xdotool key F5
-      bindsym F11 exec --no-startup-id xdotool key F11
+#       # Touch-friendly keyboard shortcuts
+#       bindsym F5 exec --no-startup-id xdotool key F5
+#       bindsym F11 exec --no-startup-id xdotool key F11
       
-      # Screen rotation (for tablets that support it)
-      bindsym Mod4+r exec --no-startup-id xrandr --output eDP-1 --rotate right
-      bindsym Mod4+l exec --no-startup-id xrandr --output eDP-1 --rotate left  
-      bindsym Mod4+n exec --no-startup-id xrandr --output eDP-1 --rotate normal
-      bindsym Mod4+i exec --no-startup-id xrandr --output eDP-1 --rotate inverted
+#       # Screen rotation (for tablets that support it)
+#       bindsym Mod4+r exec --no-startup-id xrandr --output eDP-1 --rotate right
+#       bindsym Mod4+l exec --no-startup-id xrandr --output eDP-1 --rotate left  
+#       bindsym Mod4+n exec --no-startup-id xrandr --output eDP-1 --rotate normal
+#       bindsym Mod4+i exec --no-startup-id xrandr --output eDP-1 --rotate inverted
       
-      # Brightness controls
-      bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-      bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+#       # Brightness controls
+#       bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+#       bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
       
-      # Volume controls
-      bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-      bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-      bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+#       # Volume controls
+#       bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+#       bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+#       bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
       
-      # Show/hide on-screen keyboard
-      bindsym Mod4+k exec --no-startup-id onboard
-      bindsym Mod4+Shift+k exec --no-startup-id pkill onboard
+#       # Show/hide on-screen keyboard
+#       bindsym Mod4+k exec --no-startup-id onboard
+#       bindsym Mod4+Shift+k exec --no-startup-id pkill onboard
       
-      # Emergency exit and restart
-      bindsym Control+Mod1+Delete restart
-      bindsym Control+Mod1+End exec --no-startup-id i3lock
+#       # Emergency exit and restart
+#       bindsym Control+Mod1+Delete restart
+#       bindsym Control+Mod1+End exec --no-startup-id i3lock
       
-      # Tab navigation (touch-friendly)
-      bindsym Control+Tab exec --no-startup-id xdotool key ctrl+Tab
-      bindsym Control+Shift+Tab exec --no-startup-id xdotool key ctrl+shift+Tab
-      bindsym Control+1 exec --no-startup-id xdotool key ctrl+1
-      bindsym Control+2 exec --no-startup-id xdotool key ctrl+2
-      bindsym Control+3 exec --no-startup-id xdotool key ctrl+3
+#       # Tab navigation (touch-friendly)
+#       bindsym Control+Tab exec --no-startup-id xdotool key ctrl+Tab
+#       bindsym Control+Shift+Tab exec --no-startup-id xdotool key ctrl+shift+Tab
+#       bindsym Control+1 exec --no-startup-id xdotool key ctrl+1
+#       bindsym Control+2 exec --no-startup-id xdotool key ctrl+2
+#       bindsym Control+3 exec --no-startup-id xdotool key ctrl+3
       
-      # Touch gestures simulation
-      bindsym --whole-window button4 exec --no-startup-id xdotool key ctrl+plus
-      bindsym --whole-window button5 exec --no-startup-id xdotool key ctrl+minus
+#       # Touch gestures simulation
+#       bindsym --whole-window button4 exec --no-startup-id xdotool key ctrl+plus
+#       bindsym --whole-window button5 exec --no-startup-id xdotool key ctrl+minus
       
-      # Disable most other shortcuts for security
-      bindsym Mod1+Tab exec /bin/true
-      bindsym Mod4+d exec /bin/true
+#       # Disable most other shortcuts for security
+#       bindsym Mod1+Tab exec /bin/true
+#       bindsym Mod4+d exec /bin/true
       
-      # Status bar (minimal for tablets)
-      bar {
-        status_command i3status
-        position top
-        height 30
+#       # Status bar (minimal for tablets)
+#       bar {
+#         status_command i3status
+#         position top
+#         height 30
         
-        colors {
-          background #000000
-          statusline #ffffff
-          separator #666666
+#         colors {
+#           background #000000
+#           statusline #ffffff
+#           separator #666666
           
-          focused_workspace  #4c7899 #285577 #ffffff
-          active_workspace   #333333 #5f676a #ffffff
-          inactive_workspace #333333 #222222 #888888
-        }
-      }
-    '';
-  };
+#           focused_workspace  #4c7899 #285577 #ffffff
+#           active_workspace   #333333 #5f676a #ffffff
+#           inactive_workspace #333333 #222222 #888888
+#         }
+#       }
+#     '';
+#   };
 
-  # i3status configuration for tablets
-  environment.etc."i3status.conf" = {
-    text = ''
-      # i3status configuration for tablets
-      general {
-        colors = true
-        interval = 5
-        color_good = "#a3be8c"
-        color_degraded = "#ebcb8b"  
-        color_bad = "#bf616a"
-      }
+#   # i3status configuration for tablets
+#   environment.etc."i3status.conf" = {
+#     text = ''
+#       # i3status configuration for tablets
+#       general {
+#         colors = true
+#         interval = 5
+#         color_good = "#a3be8c"
+#         color_degraded = "#ebcb8b"  
+#         color_bad = "#bf616a"
+#       }
       
-      order += "wireless _first_"
-      order += "ethernet _first_"
-      order += "battery all"
-      order += "load"
-      order += "memory"
-      order += "tztime local"
+#       order += "wireless _first_"
+#       order += "ethernet _first_"
+#       order += "battery all"
+#       order += "load"
+#       order += "memory"
+#       order += "tztime local"
       
-      wireless _first_ {
-        format_up = "📶 %quality %essid %ip"
-        format_down = "📶 down"
-      }
+#       wireless _first_ {
+#         format_up = "📶 %quality %essid %ip"
+#         format_down = "📶 down"
+#       }
       
-      ethernet _first_ {
-        format_up = "🔌 %ip (%speed)"
-        format_down = "🔌 down"
-      }
+#       ethernet _first_ {
+#         format_up = "🔌 %ip (%speed)"
+#         format_down = "🔌 down"
+#       }
       
-      battery all {
-        format = "%status %percentage %remaining"
-        format_down = "No battery"
-        status_chr = "⚡"
-        status_bat = "🔋"
-        status_unk = "?"
-        status_full = "☻"
-        path = "/sys/class/power_supply/BAT%d/uevent"
-        low_threshold = 10
-      }
+#       battery all {
+#         format = "%status %percentage %remaining"
+#         format_down = "No battery"
+#         status_chr = "⚡"
+#         status_bat = "🔋"
+#         status_unk = "?"
+#         status_full = "☻"
+#         path = "/sys/class/power_supply/BAT%d/uevent"
+#         low_threshold = 10
+#       }
       
-      load {
-        format = "💻 %1min"
-        max_threshold = 2
-      }
+#       load {
+#         format = "💻 %1min"
+#         max_threshold = 2
+#       }
       
-      memory {
-        format = "🧠 %used/%available"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
-      }
+#       memory {
+#         format = "🧠 %used/%available"
+#         threshold_degraded = "1G"
+#         format_degraded = "MEMORY < %available"
+#       }
       
-      tztime local {
-        format = "📅 %Y-%m-%d 🕐 %H:%M:%S"
-      }
-    '';
-  };
+#       tztime local {
+#         format = "📅 %Y-%m-%d 🕐 %H:%M:%S"
+#       }
+#     '';
+#   };
 
-  # Firefox profile optimized for tablets
-  environment.etc."firefox-tablet-user.js" = {
-    text = ''
-      // Firefox tablet optimization preferences
-      user_pref("browser.gesture.swipe.left", "");
-      user_pref("browser.gesture.swipe.right", "");
-      user_pref("browser.gesture.tap", true);
-      user_pref("dom.w3c_touch_events.enabled", 1);
-      user_pref("layout.css.touch_action.enabled", true);
-      user_pref("apz.gtk.kinetic_scroll.enabled", true);
-      user_pref("mousewheel.min_line_scroll_amount", 40);
-      user_pref("general.smoothScroll", true);
-      user_pref("general.smoothScroll.pages", true);
-      user_pref("mousewheel.system_scroll_override_on_root_content.enabled", true);
+#   # Firefox profile optimized for tablets
+#   environment.etc."firefox-tablet-user.js" = {
+#     text = ''
+#       // Firefox tablet optimization preferences
+#       user_pref("browser.gesture.swipe.left", "");
+#       user_pref("browser.gesture.swipe.right", "");
+#       user_pref("browser.gesture.tap", true);
+#       user_pref("dom.w3c_touch_events.enabled", 1);
+#       user_pref("layout.css.touch_action.enabled", true);
+#       user_pref("apz.gtk.kinetic_scroll.enabled", true);
+#       user_pref("mousewheel.min_line_scroll_amount", 40);
+#       user_pref("general.smoothScroll", true);
+#       user_pref("general.smoothScroll.pages", true);
+#       user_pref("mousewheel.system_scroll_override_on_root_content.enabled", true);
       
-      // Performance optimizations
-      user_pref("browser.cache.memory.capacity", 65536);
-      user_pref("network.http.max-connections", 48);
-      user_pref("network.http.max-persistent-connections-per-server", 16);
-      user_pref("browser.sessionhistory.max_total_viewers", 2);
+#       // Performance optimizations
+#       user_pref("browser.cache.memory.capacity", 65536);
+#       user_pref("network.http.max-connections", 48);
+#       user_pref("network.http.max-persistent-connections-per-server", 16);
+#       user_pref("browser.sessionhistory.max_total_viewers", 2);
       
-      // Kiosk mode settings
-      user_pref("browser.chrome.site_icons", false);
-      user_pref("browser.chrome.favicons", false);
-      user_pref("browser.urlbar.suggest.searches", false);
-      user_pref("browser.urlbar.suggest.bookmark", false);
-      user_pref("browser.urlbar.suggest.history", false);
-      user_pref("browser.download.panel.shown", false);
+#       // Kiosk mode settings
+#       user_pref("browser.chrome.site_icons", false);
+#       user_pref("browser.chrome.favicons", false);
+#       user_pref("browser.urlbar.suggest.searches", false);
+#       user_pref("browser.urlbar.suggest.bookmark", false);
+#       user_pref("browser.urlbar.suggest.history", false);
+#       user_pref("browser.download.panel.shown", false);
       
-      // Touch-friendly UI
-      user_pref("browser.tabs.remote.autostart", true);
-      user_pref("layers.acceleration.force-enabled", true);
-      user_pref("webgl.force-enabled", true);
-    '';
-  };
+#       // Touch-friendly UI
+#       user_pref("browser.tabs.remote.autostart", true);
+#       user_pref("layers.acceleration.force-enabled", true);
+#       user_pref("webgl.force-enabled", true);
+#     '';
+#   };
 
-  # Configure kiosk user's environment
-  environment.etc."xinitrc-tablet" = {
-    text = ''
-      #!/bin/sh
+#   # Configure kiosk user's environment
+#   environment.etc."xinitrc-tablet" = {
+#     text = ''
+#       #!/bin/sh
       
-      # Tablet-specific initialization
-      export QT_SCALE_FACTOR=1.2  # Better scaling for small screens
-      export GDK_SCALE=1.2
-      export GDK_DPI_SCALE=1.0
+#       # Tablet-specific initialization
+#       export QT_SCALE_FACTOR=1.2  # Better scaling for small screens
+#       export GDK_SCALE=1.2
+#       export GDK_DPI_SCALE=1.0
       
-      # Set up Firefox profile for tablet
-      mkdir -p /tmp/firefox-tablet
-      cp /etc/firefox-tablet-user.js /tmp/firefox-tablet/user.js
+#       # Set up Firefox profile for tablet
+#       mkdir -p /tmp/firefox-tablet
+#       cp /etc/firefox-tablet-user.js /tmp/firefox-tablet/user.js
       
-      # Touch calibration (run once if needed)
-      # xinput_calibrator --device "Your Touch Device"
+#       # Touch calibration (run once if needed)
+#       # xinput_calibrator --device "Your Touch Device"
       
-      # Adjust mouse sensitivity for touch
-      xinput set-prop "pointer:USB OPTICAL MOUSE" "libinput Accel Speed" 0.8
+#       # Adjust mouse sensitivity for touch
+#       xinput set-prop "pointer:USB OPTICAL MOUSE" "libinput Accel Speed" 0.8
       
-      # Start i3 with tablet configuration
-      exec i3 -c /etc/i3-tablet-config
-    '';
-    mode = "0755";
-  };
+#       # Start i3 with tablet configuration
+#       exec i3 -c /etc/i3-tablet-config
+#     '';
+#     mode = "0755";
+#   };
 
   # Network configuration for tablets
   networking = {
@@ -759,5 +759,5 @@
 #  i18n.defaultLocale = "en_US.UTF-8";
 
   # This value determines the NixOS release
-#  system.stateVersion = "23.11";
+  system.stateVersion = "25.05";
 }
