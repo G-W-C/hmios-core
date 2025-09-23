@@ -99,13 +99,13 @@
   services.xserver = {
     enable = true;
     
-    displayManager = {
-      lightdm = {
-        enable = true;
-        autoLogin = {
-          enable = true;
-          user = "kiosk";
-        };
+    # displayManager = {
+    #   lightdm = {
+    #     enable = true;
+    #     autoLogin = {
+    #       enable = true;
+    #       user = "kiosk";
+    #     };
         greeters.gtk = {
           enable = true;
           theme.name = "Adwaita-dark";
@@ -188,9 +188,9 @@
     xdotool              # X automation
     unclutter            # Hide mouse cursor
     
-    # Touch-optimized keyboard
-    onboard              # On-screen keyboard
-    matchbox-keyboard    # Alternative keyboard
+    # # Touch-optimized keyboard
+    # onboard              # On-screen keyboard
+    # matchbox-keyboard    # Alternative keyboard
     
     # System tools
     brightnessctl        # Screen brightness control
