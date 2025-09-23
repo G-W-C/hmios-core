@@ -32,7 +32,6 @@
     # Graphics acceleration
     opengl = {
       enable = true;
-      driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
         intel-media-driver  # Intel graphics
@@ -44,23 +43,23 @@
     };
     
     # Audio (tablets often have speakers)
-    pulseaudio = {
-      enable = true;
-      support32Bit = true;
-    };
+#    pulseaudio = {
+#      enable = true;
+#      support32Bit = true;
+#    };
     
     # Bluetooth for peripherals
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
+#    bluetooth = {
+#      enable = true;
+#      powerOnBoot = true;
+#    };
     
     # Enable firmware updates
     enableRedistributableFirmware = true;
   };
 
   # Power management for battery devices
-  services.power-profiles-daemon.enable = true;
+#  services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
   
   powerManagement = {
