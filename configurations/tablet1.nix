@@ -30,17 +30,17 @@
   # Hardware support for tablets
   hardware = {
     # Graphics acceleration
-    opengl = {
-      enable = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver  # Intel graphics
-        vaapiIntel         # Intel VA-API
-        vaapiVdpau
-        libvdpau-va-gl
-        amdvlk            # AMD Vulkan
-      ];
-    };
+    # opengl = {
+    #   enable = true;
+    #   driSupport32Bit = true;
+    #   extraPackages = with pkgs; [
+    #     intel-media-driver  # Intel graphics
+    #     vaapiIntel         # Intel VA-API
+    #     vaapiVdpau
+    #     libvdpau-va-gl
+    #     amdvlk            # AMD Vulkan
+    #   ];
+    # };
     
     # Audio (tablets often have speakers)
 #    pulseaudio = {
