@@ -128,10 +128,10 @@
         disableWhileTyping = false;  # Keep active for kiosk use
       };
       # Touch screen settings
-      touchscreen = {
-        naturalScrolling = true;
-        tapping = true;
-      };
+#      touchscreen = {
+#        naturalScrolling = true;
+#        tapping = true;
+#      };
     };
     
     # Auto-detect displays (tablets may have rotation)
