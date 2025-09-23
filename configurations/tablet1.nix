@@ -481,6 +481,17 @@
     };
     openFirewall = true;
   };
+  fileSystems = {
+    "/" = {
+        device = "/dev/sda2";
+        fsType = "ext4";
+    };
+
+    "/boot" = {
+        device = "/dev/sda1";
+        fsType = "vfat";
+    };
+  };
 
 #   # Tablet maintenance script
 #   environment.etc."tablet-maintenance.sh" = {
