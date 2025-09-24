@@ -182,7 +182,7 @@
     }
 
     # Auto-start applications
-    exec --no-startup-id wvkbd     exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
+    exec wvkbd     exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
 
     # Virtual keyboard toggle
     bindsym $mod+space exec pkill -f wvkbd
