@@ -54,6 +54,9 @@
     ];
   }];
 
+  services.openssh.enable = true;
+  services.openssh.passwordAuthentication = true; # allow password for now
+  services.openssh.permitRootLogin = "yes";        # root can SSH
   # This value determines the NixOS release
   system.stateVersion = "25.05";
 }
