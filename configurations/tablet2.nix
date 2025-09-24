@@ -144,7 +144,7 @@
     # Key bindings
 
     # Start a terminal (disabled for kiosk)
-    # bindsym $mod+Return exec $term
+    bindsym $mod+Return exec $term
 
     # Kill focused window (disabled for kiosk)
     # bindsym $mod+Shift+q kill
@@ -182,8 +182,7 @@
     }
 
     # Auto-start applications
-    exec --no-startup-id squeekboard &
-    exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
+    exec --no-startup-id squeekboard     exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
 
     # Virtual keyboard toggle
     bindsym $mod+space exec pkill -f squeekboard || squeekboard &
