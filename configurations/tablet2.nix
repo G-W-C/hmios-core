@@ -54,6 +54,7 @@
     extraGroups = [ "wheel" "input" "video" "audio" ];
     packages = with pkgs; [
       # User-specific packages
+      foot
       squeekboard
       wvkbd
     ];
