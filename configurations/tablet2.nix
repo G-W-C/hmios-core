@@ -236,11 +236,6 @@
     squeekboard
   ];
 
-  # Prevent switching TTYs accidentally  
-  security.sysctl = {
-    "kernel.sysrq" = 0;
-  };
-
   # Sudo without password for kiosk user
   security.sudo.extraRules = [{
     users = [ "kiosk" ];
