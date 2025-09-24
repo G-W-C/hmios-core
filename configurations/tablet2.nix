@@ -30,15 +30,10 @@
   # Disable X11 - Wayland only
   services.xserver.enable = false;
 
-  # Enable Wayland and graphics
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-  };
-
   # Input method support for virtual keyboards
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    enabled = true;
+    type = "fcitx5";
     fcitx5.waylandFrontend = true;
   };
 
@@ -251,7 +246,7 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf
     ];
