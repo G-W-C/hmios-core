@@ -9,7 +9,14 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "webkiosk";
-  networking.networkmanager.enable = true;
+  networking.wireless = {
+    enable = true;
+    networks."UAP-LR".psk = "myPSK";
+    extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
+    # output ends up in /run/wpa_supplicant/wpa_supplicant.conf
+  };
+  networking.networkmanager.enable = false;
+
 
   time.timeZone = "America/Los_Angeles";
 
