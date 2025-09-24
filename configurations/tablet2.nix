@@ -182,7 +182,7 @@
 
     # Auto-start applications
     exec --no-startup-id squeekboard &
-    exec chromium --kiosk --touch-events=enabled --force-device-scale-factor=1.2 http://localhost:3000
+    exec chromium --touch-events=enabled --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
 
     # Virtual keyboard toggle
     bindsym $mod+space exec pkill -f squeekboard || squeekboard &
