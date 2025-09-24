@@ -228,7 +228,7 @@
 
   # Enable udev rules for input devices
   services.udev.packages = with pkgs; [ 
-    squeekboard
+    wvkbd
   ];
 
   # Sudo without password for kiosk user
