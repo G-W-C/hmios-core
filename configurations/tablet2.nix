@@ -54,8 +54,6 @@
     extraGroups = [ "wheel" "input" "video" "audio" ];
     packages = with pkgs; [
       # User-specific packages
-      foot
-      squeekboard
       wvkbd
     ];
   };
@@ -225,7 +223,14 @@
   #     XDG_RUNTIME_DIR = "/run/user/1000";
   #   };
   # };
-
+  systemd.user.services.wvkbd = {
+    description = "Wayland Virtual Keyboard";
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.wvkbd}/bin/wvkbd-mobintl";
+      Restart = "always";
+    };
+  };  
   # Enable udev rules for input devices
   services.udev.packages = with pkgs; [ 
     wvkbd
