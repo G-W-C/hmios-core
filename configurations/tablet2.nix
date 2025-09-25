@@ -176,13 +176,6 @@
            inactive_workspace #32323200 #32323200 #5c5c5c
        }
        height 30
-
-       # Custom module for keyboard toggle
-       tray_output primary
-       binding {
-           label "⌨"
-           command "/home/kiosk/bin/toggle-keyboard.sh"
-       }
     }
     exec_always /run/current-system/sw/bin/wvkbd-mobintl &
     # Auto-start applications
