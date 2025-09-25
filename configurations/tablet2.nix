@@ -196,7 +196,6 @@
     environment = {
       WAYLAND_DISPLAY = "wayland-0";
       XDG_RUNTIME_DIR = "/run/user/1000";
-      PATH = "/run/current-system/sw/bin";
     };
   };  
   # Enable udev rules for input devices
