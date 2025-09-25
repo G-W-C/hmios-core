@@ -30,10 +30,16 @@
   # Disable X11 services (Wayland only)
   services.xserver.enable = false;
 
-  # Enable SDDM for auto-login
-  services.sddm.enable = true;
-  services.sddm.autoLogin.enable = true;
-  services.sddm.autoLogin.user = "kiosk";
+  # Greetd auto-login
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        user = "kiosk";
+        command = "${pkgs.plasma5.kdePlasma5}/bin/startplasma-wayland";
+      };
+    };
+  };
 
   # Kiosk user
   users.users.kiosk = {
