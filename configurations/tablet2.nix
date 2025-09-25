@@ -67,9 +67,15 @@
     wofi            # Application launcher
     chromium
     firefox
+    foot
     
     # Virtual keyboards
-    wvkbd    
+    wvkbd
+    #kb support?
+    fcitx5
+    fcitx5-frontend-gtk3
+    fcitx5-frontend-gtk4
+    fcitx5-qt    
     # System utilities
     libinput
     bash
@@ -92,6 +98,10 @@
       wvkbd
     ];
    extraSessionCommands = ''
+      export GTK_IM_MODULE=fcitx
+      export QT_IM_MODULE=fcitx
+      export XMODIFIERS=@im=fcitx
+      export SDL_IM_MODULE=fcitx
       export PATH=$PATH:/run/current-system/sw/bin
       export SDL_VIDEODRIVER=wayland
       export QT_QPA_PLATFORM=wayland
