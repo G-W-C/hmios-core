@@ -92,7 +92,6 @@
     extraPackages = with pkgs; [
       swaylock
       swayidle
-      wl-clipboard
       wofi
       waybar
       wvkbd
