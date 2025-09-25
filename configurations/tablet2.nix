@@ -171,12 +171,12 @@
         }
         height 30
     }
-    #exec_always wvkbd --hidden &
+    exec_always /run/current-system/sw/bin/wvkbd-mobintl &
     # Auto-start applications
     exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
 
     # Virtual keyboard toggle
-    bindsym $mod+space exec pkill -x wvkbd-mobintl || wvkbd-mobintl --hidden &
+    bindsym $mod+space exec pkill -x wvkbd-mobintl || /run/current-system/sw/bin/wvkbd-mobintl &
 
     # Allow F5 for refresh
     bindsym F5 exec wtype -k F5
