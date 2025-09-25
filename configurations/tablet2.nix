@@ -91,10 +91,11 @@
       waybar
       wvkbd
     ];
-    extraSessionCommands = ''
+   extraSessionCommands = ''
+      export PATH=$PATH:/run/current-system/sw/bin
       export SDL_VIDEODRIVER=wayland
       export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
       export _JAVA_AWT_WM_NONREPARENTING=1
       export MOZ_ENABLE_WAYLAND=1
       export XDG_CURRENT_DESKTOP=sway
@@ -175,7 +176,7 @@
     exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
 
     # Virtual keyboard toggle
-    bindsym $mod+space exec pkill -x wvkbd || wvkbd --hidden &
+    bindsym $mod+space exec pkill -x wvkbd-mobintl || wvkbd-mobintl --hidden &
 
     # Allow F5 for refresh
     bindsym F5 exec wtype -k F5
@@ -184,48 +185,18 @@
     bindsym Ctrl+Alt+Delete exec systemctl reboot
   '';
 
-#   # Systemd user services for virtual keyboard
-#   systemd.user.services.squeekboard = {
-#     description = "Squeekboard virtual keyboard";
-#     wantedBy = [ "graphical-session.target" ];
-#     after = [ "graphical-session.target" ];
-#     serviceConfig = {
-#       ExecStart = "${pkgs.squeekboard}/bin/squeekboard";
-#       Restart = "always";
-#       RestartSec = "5";
-#     };
-#     environment = {
-#       WAYLAND_DISPLAY = "wayland-0";
-#       XDG_RUNTIME_DIR = "/run/user/1000";
-#     };
-#   };
-
-  # Alternative: wvkbd service (comment out squeekboard above if using this)
-  # systemd.user.services.wvkbd = {
-  #   description = "wvkbd virtual keyboard";
-  #   wantedBy = [ "graphical-session.target" ];
-  #   after = [ "graphical-session.target" ];
-  #   serviceConfig = {
-  #     ExecStart = "${pkgs.wvkbd}/bin/wvkbd-mobintl --hidden";
-  #     Restart = "always";
-  #     RestartSec = "5";
-  #   };
-  #   environment = {
-  #     WAYLAND_DISPLAY = "wayland-0";
-  #     XDG_RUNTIME_DIR = "/run/user/1000";
-  #   };
-  # };
   systemd.user.services.wvkbd = {
     description = "Wayland Virtual Keyboard";
     wantedBy = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.wvkbd}/bin/wvkbd-mobintl --hidden";
+      ExecStart = "/run/current-system/sw/bin/wvkbd-mobintl --hidden";
       Restart = "always";
     };
     environment = {
       WAYLAND_DISPLAY = "wayland-0";
       XDG_RUNTIME_DIR = "/run/user/1000";
+      PATH = "/run/current-system/sw/bin";
     };
   };  
   # Enable udev rules for input devices
