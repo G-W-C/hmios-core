@@ -69,13 +69,7 @@
     firefox
     
     # Virtual keyboards
-    wvkbd
-    
-    # Wayland utilities
-    wl-clipboard    # Clipboard utilities
-    grim            # Screenshot tool
-    slurp           # Screen area selection
-    
+    wvkbd    
     # System utilities
     libinput
     bash
@@ -95,7 +89,6 @@
       wl-clipboard
       wofi
       waybar
-      squeekboard
       wvkbd
     ];
     extraSessionCommands = ''
