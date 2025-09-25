@@ -69,7 +69,6 @@
     firefox
     
     # Virtual keyboards
-    squeekboard
     wvkbd
     
     # Wayland utilities
@@ -178,9 +177,9 @@
         }
         height 30
     }
-    exec_always wvkbd --hidden &
+    #exec_always wvkbd --hidden &
     # Auto-start applications
-    exec wvkbd     exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
+    exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
 
     # Virtual keyboard toggle
     bindsym $mod+space exec pkill -x wvkbd || wvkbd --hidden &
@@ -226,9 +225,14 @@
   systemd.user.services.wvkbd = {
     description = "Wayland Virtual Keyboard";
     wantedBy = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.wvkbd}/bin/wvkbd-mobintl";
+      ExecStart = "${pkgs.wvkbd}/bin/wvkbd-mobintl --hidden";
       Restart = "always";
+    };
+    environment = {
+      WAYLAND_DISPLAY = "wayland-0";
+      XDG_RUNTIME_DIR = "/run/user/1000";
     };
   };  
   # Enable udev rules for input devices
