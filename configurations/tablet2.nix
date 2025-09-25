@@ -73,9 +73,6 @@
     wvkbd
     #kb support?
     fcitx5
-    fcitx5-frontend-gtk3
-    fcitx5-frontend-gtk4
-    fcitx5-qt    
     # System utilities
     libinput
     bash
