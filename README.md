@@ -165,19 +165,14 @@ HMIOS is designed for industrial environments with security in mind:
 ## 📊 Roadmap
 
 - [ ] Web-based configuration interface
-- [ ] Prometheus monitoring integration
 - [ ] Advanced fleet analytics
-- [ ] Mobile device support
+- [ ] Mobile device support (full touch and OSK)
 - [ ] Cloud synchronization (optional)
 - [ ] Industrial protocol support (Modbus, OPC-UA)
 
 ## 🏆 Success Stories
 
-> "HMIOS reduced our HMI deployment time from weeks to hours and eliminated licensing costs across 200+ stations." 
-> - *Manufacturing Plant Manager*
 
-> "The Git-based configuration management has revolutionized how we handle plant updates."
-> - *Industrial IT Director*
 
 ## 🆘 Support
 
