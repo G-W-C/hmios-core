@@ -7,11 +7,17 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.plymouth.enable = true;
+
+  # Pick a theme (defaults to "spinner")
+  boot.plymouth.theme = "spinner"; 
+
   
   networking.hostName = "webkiosk";
   networking.wireless = {
     enable = true;
-    networks."UAP-LR".psk = "myPSK";
+    networks."UAP-LR".psk = "psk";
     extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
   };
   networking.networkmanager.enable = false;
@@ -60,6 +66,8 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+    
+    plymouth
     sway
     swaylock
     swayidle
@@ -94,8 +102,9 @@
       wvkbd
     ];
    extraSessionCommands = ''
-      export GTK_IM_MODULE=fcitx
+      #export GTK_IM_MODULE=fcitx
       export QT_IM_MODULE=fcitx
+      export QT_IM_MODULES=wayland;fcitx
       export XMODIFIERS=@im=fcitx
       export SDL_IM_MODULE=fcitx
       export PATH=$PATH:/run/current-system/sw/bin
@@ -177,9 +186,9 @@
        }
        height 30
     }
-    exec_always /run/current-system/sw/bin/wvkbd-mobintl &
+    exec_always /run/current-system/sw/bin/wvkbd-mobintl --hidden &
     # Auto-start applications
-    exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform,TextInputV3,TouchEvents  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
+    exec chromium --touch-events=enabled   --ozone-platform=wayland  --enable-features=UseOzonePlatform --enable-wayland-ime --wayland-text-input-version=3  --force-device-scale-factor=0.8 http://water.data https://cityworksonline.com
 
     # Virtual keyboard toggle
     bindsym $mod+space exec pkill -x wvkbd-mobintl || /run/current-system/sw/bin/wvkbd-mobintl &
