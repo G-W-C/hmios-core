@@ -5,11 +5,10 @@
   # System Basics
   ##########################
 
-  system.stateVersion = "23.05";  # Adjust to your NixOS version
+  system.stateVersion = "25.05";  # Adjust to your NixOS version
 
   # Timezone, hostname, etc.
   time.timeZone = "America/Los_Angeles";
-  networking.hostName = "nixos-kiosk";
 
   # Networking
   networking.hostName = "webkiosk";
@@ -37,7 +36,7 @@
   services.xserver = {
     enable = true;
     layout = "us";
-    xserver.windowManager.openbox.enable = true;
+    windowManager.openbox.enable = true;
 
     # Auto-login kiosk user
     displayManager.autoLogin.enable = true;
@@ -54,10 +53,6 @@
   ##########################
   # Touchscreen / Input
   ##########################
-  hardware.input = {
-    touchscreen.enable = true;
-    evdev.enable = true;
-  };
 
   ##########################
   # System Packages
@@ -90,7 +85,16 @@
     # Start Chromium in kiosk mode
     chromium --kiosk --no-first-run --disable-translate "http://water.data" &
   '';
-
+  ########################## 
+  # SSH for remote updates
+  ##########################
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "yes";
+      PasswordAuthentication = true;
+    };
+  }; 
   ##########################
   # Optional: Lockdown tweaks
   ##########################
