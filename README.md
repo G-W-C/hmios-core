@@ -4,24 +4,7 @@
 
 HMIOS transforms commodity hardware into reliable, centrally-managed industrial HMI terminals using NixOS, Git-based configuration management, and open-source technologies.
 
-## 🚀 Quick Start
 
-### One-Command Installation
-```bash
-# Boot from NixOS minimal ISO, then:
-curl -sSL https://raw.githubusercontent.com/yourusername/hmios-core/main/install.sh | bash
-```
-
-### Manual Installation
-```bash
-# Clone repository
-git clone https://github.com/yourusername/hmios-core.git
-cd hmios-core
-
-# Copy configuration to NixOS
-sudo cp configurations/base-configuration.nix /etc/nixos/configuration.nix
-sudo nixos-rebuild switch
-```
 
 ## 🎯 Features
 
@@ -182,19 +165,14 @@ HMIOS is designed for industrial environments with security in mind:
 ## 📊 Roadmap
 
 - [ ] Web-based configuration interface
-- [ ] Prometheus monitoring integration
 - [ ] Advanced fleet analytics
-- [ ] Mobile device support
+- [ ] Mobile device support (full touch and OSK)
 - [ ] Cloud synchronization (optional)
 - [ ] Industrial protocol support (Modbus, OPC-UA)
 
 ## 🏆 Success Stories
 
-> "HMIOS reduced our HMI deployment time from weeks to hours and eliminated licensing costs across 200+ stations." 
-> - *Manufacturing Plant Manager*
 
-> "The Git-based configuration management has revolutionized how we handle plant updates."
-> - *Industrial IT Director*
 
 ## 🆘 Support
 
