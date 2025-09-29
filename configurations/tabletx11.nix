@@ -6,6 +6,21 @@
   ##########################
 
   system.stateVersion = "25.05";  # Adjust to your NixOS version
+      # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+ fileSystems = {
+    "/" = {
+      device = "/dev/sda2";
+      fsType = "ext4";
+    };
+
+    "/boot" = {
+      device = "/dev/sda1";
+      fsType = "vfat";
+    };
+  };
 
   # Timezone, hostname, etc.
   time.timeZone = "America/Los_Angeles";
@@ -14,7 +29,7 @@
   networking.hostName = "webkiosk";
   networking.wireless = {
     enable = true;
-    networks."UAP-LR".psk = "myPSK";
+    networks."UAP-LR".psk = "pk";
     extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
   };
   networking.networkmanager.enable = false;
@@ -99,7 +114,5 @@
   # Optional: Lockdown tweaks
   ##########################
   # Prevent switching TTYs
-  security.pam.services.login.extraConfig = ''
-    auth required pam_securetty.so
-  '';
-}
+ 
+ }
